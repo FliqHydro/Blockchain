@@ -1,1 +1,6 @@
 /C/Users/ianwh/Desktop/Blockchain
+git status
+git add README.md
+git commit -m "hello"
+git push origin master
+git pull origin master
