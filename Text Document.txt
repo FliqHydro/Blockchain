@@ -4,3 +4,4 @@ git add README.md
 git commit -m "hello"
 git push origin master
 git pull origin master
+git checkout -b assignments
