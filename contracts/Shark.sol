@@ -9,10 +9,13 @@ contract Shark {
         uint speed;
         uint strength;
         string typeOfShark;
+        uint winCount;
+        uint level;
+        uint lossCount;
     }
 
     function createBasicShark() public {
-        uint id = sharks.push(SharkObject(10, 10, "blacktip reef shark")) - 1;
+        uint id = sharks.push(SharkObject(10, 10, "blacktip reef shark", 0, 1, 0)) - 1;
         owners[id] = msg.sender;
         ownerSharkCount[msg.sender]++;
     } 
