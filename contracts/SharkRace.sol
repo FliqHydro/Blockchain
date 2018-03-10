@@ -17,9 +17,9 @@ contract SharkRace is Shark {
     SharkObject storage enemyShark = sharks[_targetId];
     uint rand = randMod(100);
     if (rand <= attackVictoryProbability) {
-//myShark.winCount++;
-      //myShark.level++;
-      //enemyShark.lossCount++;
+      myShark.winCount++;
+      myShark.level++;
+      enemyShark.lossCount++;
 
     } else {
       myShark.lossCount++;
