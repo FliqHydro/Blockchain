@@ -14,19 +14,21 @@ contract Shark {
         uint lossCount;
     }
 
+    modifier onlyOwnerOf(uint _sharkId) {
+        require(msg.sender == owners[_sharkId]);
+        _;
+    }
+
     function createBasicShark() public {
         uint id = sharks.push(SharkObject(10, 10, "blacktip reef shark", 0, 1, 0)) - 1;
         owners[id] = msg.sender;
         ownerSharkCount[msg.sender]++;
     } 
 
-    function trainShark(uint _sharkId) public {
-        require(msg.sender == owners[_sharkId]);
+    function trainShark(uint _sharkId) public onlyOwnerOf(_sharkId) {
         sharks[_sharkId].speed ++;
         sharks[_sharkId].strength ++; 
-        // TODO: Increase Speed or Strength
     }  
-    //TODO: Double check struct syntax
     function getShark() public view returns (uint[]) {
         uint[] memory result = new uint[](ownerSharkCount[msg.sender]);
         uint counter = 0;
