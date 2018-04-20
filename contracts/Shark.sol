@@ -30,6 +30,11 @@ contract Shark {
         sharks[_sharkId].strength ++; 
     }  
 
+    function getShark(uint _sharkId) public onlyOwnerOf(_sharkId) returns (uint speed, uint strenght, string typeOfShark, uint winCount, uint level, uint lossCount) {
+      SharkObject storage shark = sharks[_sharkId];
+      return (shark.speed, shark.strength, shark.typeOfShark, shark.winCount, shark.level, shark.lossCount);
+    }
+
     function getSharks() public view returns (uint[]) {
         uint[] memory result = new uint[](ownerSharkCount[msg.sender]);
         uint counter = 0;
