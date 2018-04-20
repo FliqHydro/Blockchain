@@ -29,7 +29,8 @@ contract Shark {
         sharks[_sharkId].speed ++;
         sharks[_sharkId].strength ++; 
     }  
-    function getShark() public view returns (uint[]) {
+
+    function getSharks() public view returns (uint[]) {
         uint[] memory result = new uint[](ownerSharkCount[msg.sender]);
         uint counter = 0;
         for (uint i = 0; i < sharks.length; i++) {
