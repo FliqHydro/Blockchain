@@ -27,12 +27,12 @@ window.App = {
     // Get the initial account balance so it can be displayed.
     web3.eth.getAccounts(function(err, accs) {
       if (err != null) {
-        alert("There was an error fetching your accounts.");
+        console.error("There was an error fetching your accounts.");
         return;
       }
 
       if (accs.length == 0) {
-        alert("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
+        console.error("Couldn't get any accounts! Make sure your Ethereum client is configured correctly.");
         return;
       }
 
