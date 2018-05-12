@@ -35,8 +35,17 @@
       </nav>
 
       <div class="row">
-        <h1>Training</h1>
+        <div class="col">
+          <h1>Training</h1>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" id="getSharks">Retrieve your sharks!</button>
+        </div>
+      </div>
+
 
       <div class="row">
         <div class="col">
@@ -49,19 +58,7 @@
                 <th scope="col">Speed</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Black tip reef shark</th>
-                <td>1</td>
-                <td>
-                  <span class="strength">10</span>
-                  <button class="btn btn-secondary">Train Strength</button>
-                </td>
-                <td>
-                  <span class="speed">10</span>
-                  <button class="btn btn-secondary">Train Speed</button>
-                </td>
-              </tr>
+            <tbody id="ownedSharks">
             </tbody>
           </table>
         </div>
