@@ -23,12 +23,12 @@ contract Shark {
         uint id = sharks.push(SharkObject(10, 10, "blacktip reef shark", 0, 1, 0)) - 1;
         owners[id] = msg.sender;
         ownerSharkCount[msg.sender]++;
-    } 
+    }
 
     function trainShark(uint _sharkId) public onlyOwnerOf(_sharkId) {
         sharks[_sharkId].speed ++;
-        sharks[_sharkId].strength ++; 
-    }  
+        sharks[_sharkId].strength ++;
+    }
 
     function getShark(uint _sharkId) public view returns (uint speed, uint strenght, string typeOfShark, uint winCount, uint level, uint lossCount) {
       SharkObject storage shark = sharks[_sharkId];
@@ -45,6 +45,21 @@ contract Shark {
             }
         }
         return result;
+    }
+
+    function getAllOpponents() public view returns (uint[]) {
+      uint sharkCount = ownerSharkCount[msg.sender];
+      uint total = sharks.length - sharkCount;
+
+      uint[] memory result = new uint[](total);
+      uint counter = 0;
+      for (uint i = 0; i < total; i++) {
+        if (!(owners[i] == msg.sender)) {
+          result[counter] = i;
+          counter++;
+        }
+      }
+      return result;
     }
 
 }

@@ -104,6 +104,51 @@ window.App = {
       })
     })
 
+    // Get opponent sharks
+    $("#getOpponents").click(function(e) {
+      var shark
+
+      console.log('opponents')
+      Shark.deployed().then((instance) => {
+        shark = instance;
+
+        return shark.getAllOpponents({from: account})
+      }).then((data) => {
+
+        console.dir(data)
+
+        $("#opponents").empty();
+
+        data.forEach((id) => {
+
+          shark.getShark(id, {from: account}).then((shark) => {
+
+            $("#opponents").append(`
+              <tr>
+                <th scope="row">${shark[2]}</th>
+                <td>${shark[4]}</td>
+                <td>
+                  <span class="strength">${shark[1]}</span>
+                </td>
+                <td>
+                  <span class="speed">${shark[0]}</span>
+                </td>
+                <td>
+                  <button class="btn btn-secondary">Race</button>
+                </td>
+              </tr>`)
+
+          })
+
+
+        })
+
+      }).catch((e) => {
+        console.error(e)
+        alert('There was an error');
+      })
+    })
+
   },
 
 };
